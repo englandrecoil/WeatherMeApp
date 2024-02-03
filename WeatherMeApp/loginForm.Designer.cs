@@ -205,6 +205,7 @@
             this.buttonLogin.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonLogin.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.buttonLogin.FlatAppearance.BorderSize = 0;
+            this.buttonLogin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.buttonLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLogin.Font = new System.Drawing.Font("Yu Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonLogin.ForeColor = System.Drawing.Color.Transparent;

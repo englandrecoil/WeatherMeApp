@@ -63,6 +63,7 @@ namespace WeatherMeApp
             this.buttonReg.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonReg.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.buttonReg.FlatAppearance.BorderSize = 0;
+            this.buttonReg.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.buttonReg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonReg.Font = new System.Drawing.Font("Yu Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonReg.ForeColor = System.Drawing.Color.Transparent;
