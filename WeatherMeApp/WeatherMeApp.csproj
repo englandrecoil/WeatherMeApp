@@ -83,5 +83,9 @@
   <ItemGroup>
     <None Include="Properties\background_image.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="images\7795651_weather_day_sun_icon.png" />
+    <Content Include="Properties\background_image-photoaidcom-darken.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -47,6 +47,7 @@ namespace WeatherMeApp
             this.nameField = new System.Windows.Forms.TextBox();
             this.greetingsText2 = new System.Windows.Forms.Label();
             this.greetingsText1 = new System.Windows.Forms.Label();
+            this.greetingsTextLabel = new System.Windows.Forms.Label();
             this.groupBoxReg.SuspendLayout();
             this.PasswordTableLayout.SuspendLayout();
             this.EmailTableLayout.SuspendLayout();
@@ -256,16 +257,31 @@ namespace WeatherMeApp
             this.greetingsText1.TabIndex = 4;
             this.greetingsText1.Text = "LET\'S GET STARTED";
             // 
+            // greetingsTextLabel
+            // 
+            this.greetingsTextLabel.BackColor = System.Drawing.Color.Transparent;
+            this.greetingsTextLabel.Font = new System.Drawing.Font("Yu Gothic UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.greetingsTextLabel.ForeColor = System.Drawing.Color.Transparent;
+            this.greetingsTextLabel.Location = new System.Drawing.Point(250, 432);
+            this.greetingsTextLabel.Name = "greetingsTextLabel";
+            this.greetingsTextLabel.Size = new System.Drawing.Size(380, 245);
+            this.greetingsTextLabel.TabIndex = 2;
+            this.greetingsTextLabel.Text = "Explore the world with WeatherMe...\r\n\r\n... your personal weather companion. Recei" +
+    "ve personalized recommendations, and stay informed about the conditions that mat" +
+    "ter to you. Enjoy your journey!\r\n";
+            // 
             // registerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::WeatherMeApp.Properties.Resources.background_image;
+            this.BackgroundImage = global::WeatherMeApp.Properties.Resources.background_image_photoaidcom_darken;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1424, 912);
+            this.Controls.Add(this.greetingsTextLabel);
             this.Controls.Add(this.groupBoxReg);
             this.MaximizeBox = false;
             this.Name = "registerForm";
+            this.Opacity = 0.5D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -298,6 +314,7 @@ namespace WeatherMeApp
         private Label orLabel;
         private Label orAdditionalLabel;
         private Label label1;
+        private Label greetingsTextLabel;
     }
 }
 
