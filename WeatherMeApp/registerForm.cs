@@ -22,5 +22,30 @@ namespace WeatherMeApp
         {
         }
 
+        private void buttonReg_Click(object sender, EventArgs e)
+        {
+            if (nameFieldReg.Text == "")
+            {
+                MessageBox.Show("Введите имя");
+                return;
+            }
+            else if (passwordFieldReg.Text == "")
+            {
+                MessageBox.Show("Введите пароль");
+                return;
+            }
+            else if (emailFieldReg.Text == "")
+            {
+                MessageBox.Show("Введите Email");
+            }
+
+        }
+
+        private void linkToLogin_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            loginForm loginFormLink = new loginForm();
+            loginFormLink.Show();
+        }
     }
 }

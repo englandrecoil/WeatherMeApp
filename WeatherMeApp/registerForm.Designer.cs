@@ -33,25 +33,28 @@ namespace WeatherMeApp
         {
             this.buttonReg = new System.Windows.Forms.Button();
             this.groupBoxReg = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.linkToLogin = new System.Windows.Forms.Label();
             this.orAdditionalLabel = new System.Windows.Forms.Label();
             this.orLabel = new System.Windows.Forms.Label();
             this.hintTextPassword = new System.Windows.Forms.GroupBox();
             this.PasswordTableLayout = new System.Windows.Forms.TableLayoutPanel();
-            this.passwordField = new System.Windows.Forms.TextBox();
+            this.passwordFieldReg = new System.Windows.Forms.TextBox();
             this.hintTextEmail = new System.Windows.Forms.GroupBox();
             this.EmailTableLayout = new System.Windows.Forms.TableLayoutPanel();
-            this.nameEmail = new System.Windows.Forms.TextBox();
+            this.emailFieldReg = new System.Windows.Forms.TextBox();
             this.hintTextName = new System.Windows.Forms.GroupBox();
             this.nameTableLayout = new System.Windows.Forms.TableLayoutPanel();
-            this.nameField = new System.Windows.Forms.TextBox();
+            this.nameFieldReg = new System.Windows.Forms.TextBox();
             this.greetingsText2 = new System.Windows.Forms.Label();
             this.greetingsText1 = new System.Windows.Forms.Label();
             this.greetingsTextLabel = new System.Windows.Forms.Label();
+            this.sunPicture = new System.Windows.Forms.PictureBox();
+            this.appName = new System.Windows.Forms.Label();
             this.groupBoxReg.SuspendLayout();
             this.PasswordTableLayout.SuspendLayout();
             this.EmailTableLayout.SuspendLayout();
             this.nameTableLayout.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sunPicture)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonReg
@@ -69,11 +72,12 @@ namespace WeatherMeApp
             this.buttonReg.TabIndex = 0;
             this.buttonReg.Text = "GET STARTED";
             this.buttonReg.UseVisualStyleBackColor = false;
+            this.buttonReg.Click += new System.EventHandler(this.buttonReg_Click);
             // 
             // groupBoxReg
             // 
             this.groupBoxReg.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.groupBoxReg.Controls.Add(this.label1);
+            this.groupBoxReg.Controls.Add(this.linkToLogin);
             this.groupBoxReg.Controls.Add(this.orAdditionalLabel);
             this.groupBoxReg.Controls.Add(this.orLabel);
             this.groupBoxReg.Controls.Add(this.hintTextPassword);
@@ -91,16 +95,17 @@ namespace WeatherMeApp
             this.groupBoxReg.TabIndex = 1;
             this.groupBoxReg.TabStop = false;
             // 
-            // label1
+            // linkToLogin
             // 
-            this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label1.Font = new System.Drawing.Font("Yu Gothic UI", 12.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(283, 551);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(108, 56);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "LOGIN HERE";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.linkToLogin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.linkToLogin.Font = new System.Drawing.Font("Yu Gothic UI", 12.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.linkToLogin.Location = new System.Drawing.Point(283, 551);
+            this.linkToLogin.Name = "linkToLogin";
+            this.linkToLogin.Size = new System.Drawing.Size(108, 56);
+            this.linkToLogin.TabIndex = 13;
+            this.linkToLogin.Text = "LOGIN HERE";
+            this.linkToLogin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.linkToLogin.Click += new System.EventHandler(this.linkToLogin_Click);
             // 
             // orAdditionalLabel
             // 
@@ -141,7 +146,7 @@ namespace WeatherMeApp
             this.PasswordTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.PasswordTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.PasswordTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.PasswordTableLayout.Controls.Add(this.passwordField, 0, 0);
+            this.PasswordTableLayout.Controls.Add(this.passwordFieldReg, 0, 0);
             this.PasswordTableLayout.Location = new System.Drawing.Point(36, 316);
             this.PasswordTableLayout.Name = "PasswordTableLayout";
             this.PasswordTableLayout.RowCount = 1;
@@ -151,16 +156,16 @@ namespace WeatherMeApp
             this.PasswordTableLayout.Size = new System.Drawing.Size(389, 56);
             this.PasswordTableLayout.TabIndex = 10;
             // 
-            // passwordField
+            // passwordFieldReg
             // 
-            this.passwordField.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.passwordField.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.passwordField.Font = new System.Drawing.Font("Yu Gothic", 15.75F);
-            this.passwordField.Location = new System.Drawing.Point(4, 11);
-            this.passwordField.Name = "passwordField";
-            this.passwordField.Size = new System.Drawing.Size(381, 34);
-            this.passwordField.TabIndex = 0;
-            this.passwordField.UseSystemPasswordChar = true;
+            this.passwordFieldReg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.passwordFieldReg.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.passwordFieldReg.Font = new System.Drawing.Font("Yu Gothic", 15.75F);
+            this.passwordFieldReg.Location = new System.Drawing.Point(4, 11);
+            this.passwordFieldReg.Name = "passwordFieldReg";
+            this.passwordFieldReg.Size = new System.Drawing.Size(381, 34);
+            this.passwordFieldReg.TabIndex = 0;
+            this.passwordFieldReg.UseSystemPasswordChar = true;
             // 
             // hintTextEmail
             // 
@@ -180,7 +185,7 @@ namespace WeatherMeApp
             this.EmailTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.EmailTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.EmailTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.EmailTableLayout.Controls.Add(this.nameEmail, 0, 0);
+            this.EmailTableLayout.Controls.Add(this.emailFieldReg, 0, 0);
             this.EmailTableLayout.Location = new System.Drawing.Point(36, 236);
             this.EmailTableLayout.Name = "EmailTableLayout";
             this.EmailTableLayout.RowCount = 1;
@@ -190,15 +195,15 @@ namespace WeatherMeApp
             this.EmailTableLayout.Size = new System.Drawing.Size(389, 56);
             this.EmailTableLayout.TabIndex = 9;
             // 
-            // nameEmail
+            // emailFieldReg
             // 
-            this.nameEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.nameEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.nameEmail.Font = new System.Drawing.Font("Yu Gothic", 15.75F);
-            this.nameEmail.Location = new System.Drawing.Point(4, 11);
-            this.nameEmail.Name = "nameEmail";
-            this.nameEmail.Size = new System.Drawing.Size(381, 34);
-            this.nameEmail.TabIndex = 0;
+            this.emailFieldReg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.emailFieldReg.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.emailFieldReg.Font = new System.Drawing.Font("Yu Gothic", 15.75F);
+            this.emailFieldReg.Location = new System.Drawing.Point(4, 11);
+            this.emailFieldReg.Name = "emailFieldReg";
+            this.emailFieldReg.Size = new System.Drawing.Size(381, 34);
+            this.emailFieldReg.TabIndex = 0;
             // 
             // hintTextName
             // 
@@ -218,7 +223,7 @@ namespace WeatherMeApp
             this.nameTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.nameTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.nameTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.nameTableLayout.Controls.Add(this.nameField, 0, 0);
+            this.nameTableLayout.Controls.Add(this.nameFieldReg, 0, 0);
             this.nameTableLayout.Location = new System.Drawing.Point(36, 157);
             this.nameTableLayout.Name = "nameTableLayout";
             this.nameTableLayout.RowCount = 1;
@@ -228,15 +233,15 @@ namespace WeatherMeApp
             this.nameTableLayout.Size = new System.Drawing.Size(389, 56);
             this.nameTableLayout.TabIndex = 2;
             // 
-            // nameField
+            // nameFieldReg
             // 
-            this.nameField.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.nameField.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.nameField.Font = new System.Drawing.Font("Yu Gothic", 15.75F);
-            this.nameField.Location = new System.Drawing.Point(4, 11);
-            this.nameField.Name = "nameField";
-            this.nameField.Size = new System.Drawing.Size(381, 34);
-            this.nameField.TabIndex = 0;
+            this.nameFieldReg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.nameFieldReg.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.nameFieldReg.Font = new System.Drawing.Font("Yu Gothic", 15.75F);
+            this.nameFieldReg.Location = new System.Drawing.Point(4, 11);
+            this.nameFieldReg.Name = "nameFieldReg";
+            this.nameFieldReg.Size = new System.Drawing.Size(381, 34);
+            this.nameFieldReg.TabIndex = 0;
             // 
             // greetingsText2
             // 
@@ -260,7 +265,7 @@ namespace WeatherMeApp
             // greetingsTextLabel
             // 
             this.greetingsTextLabel.BackColor = System.Drawing.Color.Transparent;
-            this.greetingsTextLabel.Font = new System.Drawing.Font("Yu Gothic UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.greetingsTextLabel.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.greetingsTextLabel.ForeColor = System.Drawing.Color.Transparent;
             this.greetingsTextLabel.Location = new System.Drawing.Point(250, 432);
             this.greetingsTextLabel.Name = "greetingsTextLabel";
@@ -270,6 +275,28 @@ namespace WeatherMeApp
     "ve personalized recommendations, and stay informed about the conditions that mat" +
     "ter to you. Enjoy your journey!\r\n";
             // 
+            // sunPicture
+            // 
+            this.sunPicture.BackColor = System.Drawing.Color.Transparent;
+            this.sunPicture.Image = global::WeatherMeApp.Properties.Resources.sun_icon_final__1_;
+            this.sunPicture.Location = new System.Drawing.Point(250, 219);
+            this.sunPicture.Name = "sunPicture";
+            this.sunPicture.Size = new System.Drawing.Size(67, 67);
+            this.sunPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.sunPicture.TabIndex = 3;
+            this.sunPicture.TabStop = false;
+            // 
+            // appName
+            // 
+            this.appName.BackColor = System.Drawing.Color.Transparent;
+            this.appName.Font = new System.Drawing.Font("Yu Gothic Medium", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.appName.ForeColor = System.Drawing.Color.White;
+            this.appName.Location = new System.Drawing.Point(320, 236);
+            this.appName.Name = "appName";
+            this.appName.Size = new System.Drawing.Size(197, 33);
+            this.appName.TabIndex = 4;
+            this.appName.Text = "WeatherMe";
+            // 
             // registerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -277,12 +304,14 @@ namespace WeatherMeApp
             this.BackgroundImage = global::WeatherMeApp.Properties.Resources.background_image_photoaidcom_darken;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1424, 912);
+            this.Controls.Add(this.appName);
+            this.Controls.Add(this.sunPicture);
             this.Controls.Add(this.greetingsTextLabel);
             this.Controls.Add(this.groupBoxReg);
             this.MaximizeBox = false;
             this.Name = "registerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "WeatherMe";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBoxReg.ResumeLayout(false);
             this.PasswordTableLayout.ResumeLayout(false);
@@ -291,6 +320,7 @@ namespace WeatherMeApp
             this.EmailTableLayout.PerformLayout();
             this.nameTableLayout.ResumeLayout(false);
             this.nameTableLayout.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sunPicture)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -305,15 +335,17 @@ namespace WeatherMeApp
         private System.Windows.Forms.GroupBox hintTextPassword;
         private System.Windows.Forms.GroupBox hintTextEmail;
         private TableLayoutPanel nameTableLayout;
-        private TextBox nameField;
+        private TextBox nameFieldReg;
         private TableLayoutPanel PasswordTableLayout;
-        private TextBox passwordField;
+        private TextBox passwordFieldReg;
         private TableLayoutPanel EmailTableLayout;
-        private TextBox nameEmail;
+        private TextBox emailFieldReg;
         private Label orLabel;
         private Label orAdditionalLabel;
-        private Label label1;
+        private Label linkToLogin;
         private Label greetingsTextLabel;
+        private PictureBox sunPicture;
+        private Label appName;
     }
 }
 

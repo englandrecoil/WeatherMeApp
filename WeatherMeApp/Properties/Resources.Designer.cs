@@ -63,29 +63,19 @@ namespace WeatherMeApp.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _7795651_weather_day_sun_icon {
-            get {
-                object obj = ResourceManager.GetObject("7795651_weather_day_sun_icon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap background_image {
-            get {
-                object obj = ResourceManager.GetObject("background_image", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap background_image_photoaidcom_darken {
             get {
                 object obj = ResourceManager.GetObject("background_image-photoaidcom-darken", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sun_icon_final__1_ {
+            get {
+                object obj = ResourceManager.GetObject("sun_icon_final (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
