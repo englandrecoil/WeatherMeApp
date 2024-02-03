@@ -202,6 +202,7 @@
             // 
             this.buttonLogin.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonLogin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonLogin.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonLogin.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.buttonLogin.FlatAppearance.BorderSize = 0;
             this.buttonLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -254,13 +255,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::WeatherMeApp.Properties.Resources.background_image_photoaidcom_darken;
+            this.BackgroundImage = global::WeatherMeApp.Properties.Resources.background_final;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1384, 912);
+            this.ClientSize = new System.Drawing.Size(1424, 912);
             this.Controls.Add(this.appName);
             this.Controls.Add(this.sunPicture);
             this.Controls.Add(this.greetingsTextLabel);
             this.Controls.Add(this.groupBoxLogin);
+            this.MaximizeBox = false;
             this.Name = "loginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WeatherMe";

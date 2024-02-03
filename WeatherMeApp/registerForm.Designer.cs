@@ -301,7 +301,7 @@ namespace WeatherMeApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::WeatherMeApp.Properties.Resources.background_image_photoaidcom_darken;
+            this.BackgroundImage = global::WeatherMeApp.Properties.Resources.background_final;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1424, 912);
             this.Controls.Add(this.appName);

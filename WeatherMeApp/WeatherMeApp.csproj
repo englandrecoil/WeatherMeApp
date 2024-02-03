@@ -74,6 +74,9 @@
     <EmbeddedResource Include="loginForm.resx">
       <DependentUpon>loginForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="mainPageForm.resx">
+      <DependentUpon>mainPageForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="registerForm.resx">
       <DependentUpon>registerForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -99,6 +102,7 @@
     <None Include="Properties\background_image.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="images\background_final.jpg" />
     <Content Include="images\background_image-photoaidcom-darken.jpg" />
     <Content Include="images\sun_icon_final %281%29.png" />
     <Content Include="Properties\background_image-photoaidcom-darken.jpg" />
