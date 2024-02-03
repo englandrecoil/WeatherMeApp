@@ -52,6 +52,12 @@
     <Compile Include="loginForm.Designer.cs">
       <DependentUpon>loginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="mainPageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mainPageForm.Designer.cs">
+      <DependentUpon>mainPageForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

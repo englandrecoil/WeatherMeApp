@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -22,22 +23,38 @@ namespace WeatherMeApp
         {
         }
 
+        private static bool isValidEmail(string email)
+        {
+            string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+            Regex regex = new Regex(pattern);
+            return regex.IsMatch(email);
+        }
+        private static bool isValidPassword(string password)
+        {
+            return password.Length >= 8;
+        }
+        
+        // Проверки корректности данных
         private void buttonReg_Click(object sender, EventArgs e)
         {
-            if (nameFieldReg.Text == "")
+            if ((nameFieldReg.Text == "") | (emailFieldReg.Text == "") | (passwordFieldReg.Text == ""))
             {
-                MessageBox.Show("Введите имя");
+                MessageBox.Show("Все поля должны быть заполнены", "Ошибка",MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            else if (passwordFieldReg.Text == "")
+            if (!isValidEmail(emailFieldReg.Text))
             {
-                MessageBox.Show("Введите пароль");
+                MessageBox.Show("Введите корректный адрес электронной почты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            else if (emailFieldReg.Text == "")
+            if (!isValidPassword(passwordFieldReg.Text))
             {
-                MessageBox.Show("Введите Email");
+                MessageBox.Show("Пароль должен содержать минимум 8 символов", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+            this.Hide();
+            mainPageForm mainPageFormLink = new mainPageForm();
+            mainPageFormLink.Show();
 
         }
 
