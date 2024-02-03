@@ -77,6 +77,8 @@
             // buttonSearch
             // 
             this.buttonSearch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonSearch.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightGray;
+            this.buttonSearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSearch.Font = new System.Drawing.Font("Yu Gothic UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonSearch.Location = new System.Drawing.Point(505, 138);
@@ -404,8 +406,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonRecommendations.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonRecommendations.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonRecommendations.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.buttonRecommendations.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
             this.buttonRecommendations.FlatAppearance.BorderSize = 0;
+            this.buttonRecommendations.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.buttonRecommendations.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRecommendations.Font = new System.Drawing.Font("Yu Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonRecommendations.ForeColor = System.Drawing.Color.Transparent;
