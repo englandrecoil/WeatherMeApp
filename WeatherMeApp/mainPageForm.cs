@@ -75,7 +75,10 @@ namespace WeatherMeApp
             return localDateTime;
         }
 
-
+        private double ConvertKelvinToCelsius(double kelvinTemperature)
+        {
+            return Math.Round(kelvinTemperature - 273.15, 1);
+        }
 
         string APIKey = "729d020e9b0919e6290f6b8cb21dc7de";
         void getWeather()
@@ -86,14 +89,10 @@ namespace WeatherMeApp
                 var json = web.DownloadString(url);
                 weatherInfo.root Info = JsonConvert.DeserializeObject<weatherInfo.root>(json);
 
-                double kelvinTemp = Info.main.temp;
-                double celsTemp = Math.Round(kelvinTemp - 273.15, 1);
-                double kelvinFeelsLike = Info.main.feels_like;
-                double celsFeelsLike = Math.Round(kelvinFeelsLike - 273.15, 1);
 
                 pictureIcon.ImageLocation = "https://openweathermap.org/img/wn/" + Info.weather[0].icon.ToString() + "@2x.png";
-                temperatureInfo.Text = celsTemp.ToString("0.0") + "°";
-                feelsLikeInfo.Text = celsFeelsLike.ToString("0.0") + "°";
+                temperatureInfo.Text = ConvertKelvinToCelsius(Info.main.temp).ToString("0.0") + "°";
+                feelsLikeInfo.Text = ConvertKelvinToCelsius(Info.main.feels_like).ToString("0.0") + "°";
                 windspeedInfo.Text = Info.wind.speed.ToString() + " m/c";
                 windDirInfo.Text = GetWindDirection(Info.wind.deg);
                 sunRiseInfo.Text = convertDateTime(Info.sys.sunrise).ToShortTimeString();
