@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using System.Net;
+using System.Net.Http;
+using static System.Net.WebRequestMethods;
 
 namespace WeatherMeApp
 {
@@ -80,17 +82,28 @@ namespace WeatherMeApp
             return Math.Round(kelvinTemperature - 273.15, 1);
         }
 
+
         string APIKey = "729d020e9b0919e6290f6b8cb21dc7de";
-        void getWeather()
+        string APIUrl = "http://api.openweathermap.org/data/2.5/weather";
+        private async void getWeatherAsync()
         {
-            using (WebClient web = new WebClient())
+            using (HttpClient httpClient = new HttpClient())
             {
-                string url = string.Format("https://api.openweathermap.org/data/2.5/weather?q={0}&appid={1}", cityField.Text, APIKey);
-                var json = web.DownloadString(url);
+                string url = $"{APIUrl}?q={cityField.Text}&appid={APIKey}";
+
+                HttpResponseMessage response = await httpClient.GetAsync(url);
+                response.EnsureSuccessStatusCode();
+                
+                string json = await response.Content.ReadAsStringAsync();
                 weatherInfo.root Info = JsonConvert.DeserializeObject<weatherInfo.root>(json);
 
+                string iconUrl = $"http://openweathermap.org/img/wn/{Info.weather[0].icon}@2x.png";
+                byte[] imageBytes = await httpClient.GetByteArrayAsync(iconUrl);
+                using (System.IO.MemoryStream ms = new System.IO.MemoryStream(imageBytes))
+                {
+                    pictureIcon.Image = System.Drawing.Image.FromStream(ms);
+                }
 
-                pictureIcon.ImageLocation = "https://openweathermap.org/img/wn/" + Info.weather[0].icon.ToString() + "@2x.png";
                 temperatureInfo.Text = ConvertKelvinToCelsius(Info.main.temp).ToString("0.0") + "°";
                 feelsLikeInfo.Text = ConvertKelvinToCelsius(Info.main.feels_like).ToString("0.0") + "°";
                 windspeedInfo.Text = Info.wind.speed.ToString() + " m/c";
@@ -109,7 +122,7 @@ namespace WeatherMeApp
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
-            getWeather();
+            getWeatherAsync();
         }
     }
 }

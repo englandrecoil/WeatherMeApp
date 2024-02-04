@@ -67,6 +67,7 @@
             // 
             // weatherInfoGroupBox
             // 
+            this.weatherInfoGroupBox.BackColor = System.Drawing.Color.Gainsboro;
             this.weatherInfoGroupBox.Controls.Add(this.weatherInfoCurrent);
             this.weatherInfoGroupBox.Location = new System.Drawing.Point(93, 210);
             this.weatherInfoGroupBox.Name = "weatherInfoGroupBox";
@@ -357,9 +358,10 @@
             // 
             // pictureIcon
             // 
+            this.pictureIcon.BackColor = System.Drawing.Color.LightGray;
             this.pictureIcon.Location = new System.Drawing.Point(0, 0);
             this.pictureIcon.Name = "pictureIcon";
-            this.pictureIcon.Size = new System.Drawing.Size(91, 71);
+            this.pictureIcon.Size = new System.Drawing.Size(91, 91);
             this.pictureIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureIcon.TabIndex = 0;
             this.pictureIcon.TabStop = false;
