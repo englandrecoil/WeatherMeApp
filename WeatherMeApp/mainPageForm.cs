@@ -85,6 +85,7 @@ namespace WeatherMeApp
 
         string APIKey = "729d020e9b0919e6290f6b8cb21dc7de";
         string APIUrl = "http://api.openweathermap.org/data/2.5/weather";
+
         private async void getWeatherAsync()
         {
             using (HttpClient httpClient = new HttpClient())
@@ -117,6 +118,8 @@ namespace WeatherMeApp
                 datetimeInfo.Text = ConvertUnixTimeToDateTime(Info.dt).ToString();
                 cityInfo.Text = cityField.Text;
 
+                var weatherForRecommendations = Info.weather[0].main.ToString(); 
+
             }
         }
 
@@ -124,5 +127,85 @@ namespace WeatherMeApp
         {
             getWeatherAsync();
         }
+
+        private string GetWeatherRecommendations(weatherInfo.root weatherData)
+        {
+            StringBuilder recommendations = new StringBuilder();
+
+            string weatherType = weatherData.weather[0].main;
+            if (weatherType == "mist" | weatherType == "smoke" | weatherType == "haze" | weatherType == "dust"
+                | weatherType == "fog" | weatherType == "sand" | weatherType == "dust" | weatherType == "ash" |
+                weatherType == "squall" | weatherType == "tornado")
+            {
+                recommendations.AppendLine("   - Pay attention to local weather alerts and updates.\r\n   " +
+                    "- Dress appropriately for the specific conditions – wear protective gear if necessary.\r\n  " +
+                    " - Carry essentials like a flashlight, a charged phone, and a first aid kit.\r\n   " +
+                    "- Stay indoors if the conditions pose risks to health and safety.\r\n   " +
+                    "- If outside, be cautious of surroundings, especially in low visibility conditions.\r\n   " +
+                    "- Follow local authorities' advice and seek shelter as needed..");
+            }
+            else
+            {
+                switch (weatherType.ToLowerInvariant())
+                {
+                    case "rain":
+                        recommendations.AppendLine("   - Grab a waterproof jacket and some sturdy boots.\r\n   " +
+                            "- Take an umbrella or a raincoat to stay dry.\r\n   " +
+                            "- Bring a plastic bag to keep your phone and wallet safe.");
+                        break;
+                    case "snow":
+                        recommendations.AppendLine("   - Dress in layers and wear a warm coat, hat, and gloves.\r\n   " +
+                            "- Don't forget waterproof boots for the snow.\r\n   - Bring sunglasses to shield your eyes from the bright snow.");
+                        break;
+                    case "thunderstom":
+                        recommendations.AppendLine("   - Wear a raincoat or a waterproof jacket.\r\n  " +
+                            " - Carry an umbrella and avoid open areas.\r\n   " +
+                            "- Be cautious of lightning – better to stay indoors if possible. ");
+                        break;
+                    case "drizzle":
+                        recommendations.AppendLine("   - Wear a light waterproof jacket or coat.\r\n   " +
+                            "- Take a small umbrella just in case.\r\n   - Bring a plastic bag to keep your belongings dry.");
+                        break;
+                    case "clear":
+                        recommendations.AppendLine("   - Dress comfortably for the temperature.\r\n   " +
+                            "- Wear sunglasses and bring sunscreen for sun protection.\r\n   - Stay hydrated, especially on hot days.");
+                        break;
+                    case "clouds":
+                        recommendations.AppendLine("   - Dress in layers for potential temperature changes.\r\n   " +
+                            "- Bring a light jacket or sweater.\r\n   - Don't forget your sunglasses " +
+                            "– even if it's cloudy, UV rays can still be strong.");
+                        break;
+                }
+            }
+            return recommendations.ToString();
+        }
+
+
+        private void buttonRecommendations_Click(object sender, EventArgs e)
+        {
+            try
+            {   
+                string city = cityField.Text;
+                string url = $"{APIUrl}?q={city}&appid={APIKey}";
+
+                using (HttpClient httpClient = new HttpClient())
+                {
+                    HttpResponseMessage response = httpClient.GetAsync(url).Result;
+                    response.EnsureSuccessStatusCode();
+
+                    string json = response.Content.ReadAsStringAsync().Result;
+                    weatherInfo.root weatherData = JsonConvert.DeserializeObject<weatherInfo.root>(json);
+
+                    string recommendations = GetWeatherRecommendations(weatherData);
+
+                    MessageBox.Show(recommendations, "Weather recommendations", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error getting recommendations: " + ex.Message);
+            }
+        }
     }
+    
 }

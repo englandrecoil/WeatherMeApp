@@ -59,6 +59,7 @@
             this.buttonSearch = new System.Windows.Forms.Button();
             this.cityField = new System.Windows.Forms.TextBox();
             this.cityFieldTableLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.favoritesGroupBox = new System.Windows.Forms.GroupBox();
             this.weatherInfoGroupBox.SuspendLayout();
             this.weatherInfoCurrent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureIcon)).BeginInit();
@@ -127,6 +128,7 @@
             this.buttonRecommendations.TabIndex = 1;
             this.buttonRecommendations.Text = "CHECK RECOMMENDATIONS";
             this.buttonRecommendations.UseVisualStyleBackColor = false;
+            this.buttonRecommendations.Click += new System.EventHandler(this.buttonRecommendations_Click);
             // 
             // visibilityInfo
             // 
@@ -411,6 +413,14 @@
             this.cityFieldTableLayout.Size = new System.Drawing.Size(380, 56);
             this.cityFieldTableLayout.TabIndex = 3;
             // 
+            // favoritesGroupBox
+            // 
+            this.favoritesGroupBox.Location = new System.Drawing.Point(806, 138);
+            this.favoritesGroupBox.Name = "favoritesGroupBox";
+            this.favoritesGroupBox.Size = new System.Drawing.Size(533, 639);
+            this.favoritesGroupBox.TabIndex = 4;
+            this.favoritesGroupBox.TabStop = false;
+            // 
             // mainPageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -418,6 +428,7 @@
             this.BackgroundImage = global::WeatherMeApp.Properties.Resources.background_final;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1424, 912);
+            this.Controls.Add(this.favoritesGroupBox);
             this.Controls.Add(this.cityFieldTableLayout);
             this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.weatherInfoGroupBox);
@@ -468,5 +479,6 @@
         private System.Windows.Forms.Label feelsLikeInfo;
         private System.Windows.Forms.Label feelsLikeLabel;
         private System.Windows.Forms.Button buttonRecommendations;
+        private System.Windows.Forms.GroupBox favoritesGroupBox;
     }
 }
