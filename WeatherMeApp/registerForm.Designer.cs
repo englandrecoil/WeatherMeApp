@@ -309,6 +309,7 @@ namespace WeatherMeApp
             this.Controls.Add(this.sunPicture);
             this.Controls.Add(this.greetingsTextLabel);
             this.Controls.Add(this.groupBoxReg);
+            this.DoubleBuffered = true;
             this.MaximizeBox = false;
             this.Name = "registerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

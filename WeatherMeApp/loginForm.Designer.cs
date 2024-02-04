@@ -263,6 +263,7 @@
             this.Controls.Add(this.sunPicture);
             this.Controls.Add(this.greetingsTextLabel);
             this.Controls.Add(this.groupBoxLogin);
+            this.DoubleBuffered = true;
             this.MaximizeBox = false;
             this.Name = "loginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
