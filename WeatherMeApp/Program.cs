@@ -16,7 +16,7 @@ namespace WeatherMeApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new mainPageForm());
+            Application.Run(new registerForm());
         }
     }
 }

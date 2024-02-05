@@ -69,6 +69,8 @@
             this.buttonRefresh = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
             this.recommendationLabelText = new System.Windows.Forms.Label();
+            this.appName = new System.Windows.Forms.Label();
+            this.sunPicture = new System.Windows.Forms.PictureBox();
             this.weatherInfoGroupBox.SuspendLayout();
             this.weatherInfoCurrent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.favoriteIcon)).BeginInit();
@@ -76,6 +78,7 @@
             this.cityFieldTableLayout.SuspendLayout();
             this.favoritesGroupBox.SuspendLayout();
             this.favoritesGroup.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sunPicture)).BeginInit();
             this.SuspendLayout();
             // 
             // weatherInfoGroupBox
@@ -553,6 +556,28 @@
             this.recommendationLabelText.TabIndex = 0;
             this.recommendationLabelText.Text = "Your favorites here:";
             // 
+            // appName
+            // 
+            this.appName.BackColor = System.Drawing.Color.Transparent;
+            this.appName.Font = new System.Drawing.Font("Yu Gothic Medium", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.appName.ForeColor = System.Drawing.Color.White;
+            this.appName.Location = new System.Drawing.Point(655, 34);
+            this.appName.Name = "appName";
+            this.appName.Size = new System.Drawing.Size(197, 33);
+            this.appName.TabIndex = 9;
+            this.appName.Text = "WeatherMe";
+            // 
+            // sunPicture
+            // 
+            this.sunPicture.BackColor = System.Drawing.Color.Transparent;
+            this.sunPicture.Image = global::WeatherMeApp.Properties.Resources.sun_icon_final__1_;
+            this.sunPicture.Location = new System.Drawing.Point(583, 17);
+            this.sunPicture.Name = "sunPicture";
+            this.sunPicture.Size = new System.Drawing.Size(67, 67);
+            this.sunPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.sunPicture.TabIndex = 8;
+            this.sunPicture.TabStop = false;
+            // 
             // mainPageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -560,6 +585,8 @@
             this.BackgroundImage = global::WeatherMeApp.Properties.Resources.background_final;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1424, 912);
+            this.Controls.Add(this.appName);
+            this.Controls.Add(this.sunPicture);
             this.Controls.Add(this.favoritesGroupBox);
             this.Controls.Add(this.cityFieldTableLayout);
             this.Controls.Add(this.buttonSearch);
@@ -577,6 +604,7 @@
             this.cityFieldTableLayout.PerformLayout();
             this.favoritesGroupBox.ResumeLayout(false);
             this.favoritesGroup.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.sunPicture)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -624,5 +652,7 @@
         private System.Windows.Forms.ListView listViewFavorites;
         private System.Windows.Forms.ColumnHeader columnCity;
         private System.Windows.Forms.ColumnHeader columnTemperature;
+        private System.Windows.Forms.Label appName;
+        private System.Windows.Forms.PictureBox sunPicture;
     }
 }
