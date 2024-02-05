@@ -83,6 +83,16 @@ namespace WeatherMeApp.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap favorite_icon {
+            get {
+                object obj = ResourceManager.GetObject("favorite_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap sun_icon_final__1_ {
             get {
                 object obj = ResourceManager.GetObject("sun_icon_final (1)", resourceCulture);

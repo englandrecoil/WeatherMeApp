@@ -142,6 +142,7 @@
     <None Include="Properties\background_image.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="images\favorite_icon.png" />
     <Content Include="images\background_final.jpg" />
     <Content Include="images\background_image-photoaidcom-darken.jpg" />
     <Content Include="images\sun_icon_final %281%29.png" />

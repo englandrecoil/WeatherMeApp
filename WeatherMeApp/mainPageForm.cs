@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using System.Net;
 using System.Net.Http;
 using static System.Net.WebRequestMethods;
+using System.IO;
 
 namespace WeatherMeApp
 {
@@ -22,10 +23,14 @@ namespace WeatherMeApp
             cityField.Text = "Type city name";
             cityField.ForeColor = Color.Gray;
 
+
         }
 
+
         private void cityField_Enter(object sender, EventArgs e)
-        {   if (cityField.Text == "Type city name") {
+        {
+            if (cityField.Text == "Type city name")
+            {
                 cityField.Text = "";
                 cityField.ForeColor = Color.Black;
             }
@@ -82,7 +87,7 @@ namespace WeatherMeApp
             return Math.Round(kelvinTemperature - 273.15, 1);
         }
 
-
+        // Weather info
         string APIKey = "729d020e9b0919e6290f6b8cb21dc7de";
         string APIUrl = "http://api.openweathermap.org/data/2.5/weather";
 
@@ -94,7 +99,7 @@ namespace WeatherMeApp
 
                 HttpResponseMessage response = await httpClient.GetAsync(url);
                 response.EnsureSuccessStatusCode();
-                
+
                 string json = await response.Content.ReadAsStringAsync();
                 weatherInfo.root Info = JsonConvert.DeserializeObject<weatherInfo.root>(json);
 
@@ -118,9 +123,10 @@ namespace WeatherMeApp
                 datetimeInfo.Text = ConvertUnixTimeToDateTime(Info.dt).ToString();
                 cityInfo.Text = cityField.Text;
 
-                var weatherForRecommendations = Info.weather[0].main.ToString(); 
+                var weatherForRecommendations = Info.weather[0].main.ToString();
 
             }
+
         }
 
         private void buttonSearch_Click(object sender, EventArgs e)
@@ -128,6 +134,7 @@ namespace WeatherMeApp
             getWeatherAsync();
         }
 
+        // Recommendations
         private string GetWeatherRecommendations(weatherInfo.root weatherData)
         {
             StringBuilder recommendations = new StringBuilder();
@@ -180,11 +187,10 @@ namespace WeatherMeApp
             return recommendations.ToString();
         }
 
-
         private void buttonRecommendations_Click(object sender, EventArgs e)
         {
             try
-            {   
+            {
                 string city = cityField.Text;
                 string url = $"{APIUrl}?q={city}&appid={APIKey}";
 
@@ -206,6 +212,65 @@ namespace WeatherMeApp
                 Console.WriteLine("Error getting recommendations: " + ex.Message);
             }
         }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            string city = cityField.Text;
+            if (!string.IsNullOrEmpty(city) && !listViewFavorites.Items.Cast<ListViewItem>().Any(item => item.Text == city) && cityField.Text != "Type city name")
+            {
+                ListViewItem listItem = new ListViewItem(city);
+                listViewFavorites.Items.Add(listItem);
+
+                cityField.Text = "Type city name";
+                cityField.ForeColor = Color.Gray;
+            }
+
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            if (listViewFavorites.SelectedItems.Count > 0)
+            {
+                listViewFavorites.SelectedItems[0].Remove();
+            }
+        }
+
+        private async void buttonRefresh_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem listItem in listViewFavorites.Items)
+            {
+                string city = listItem.Text;
+                if (!string.IsNullOrEmpty(city))
+                {
+                    string APIUrl = "http://api.openweathermap.org/data/2.5/weather";
+                    string APIKey = "729d020e9b0919e6290f6b8cb21dc7de";
+                    string url = $"{APIUrl}?q={city}&appid={APIKey}";
+                    using (HttpClient httpClient = new HttpClient())
+                    {
+                        try
+                        {
+                            HttpResponseMessage response = await httpClient.GetAsync(url);
+                            response.EnsureSuccessStatusCode();
+
+                            string json = await response.Content.ReadAsStringAsync();
+                            weatherInfo.root weatherData = JsonConvert.DeserializeObject<weatherInfo.root>(json);
+                            
+                            if (listItem.SubItems.Count <= listViewFavorites.Columns.Count)
+                            {
+                                listItem.SubItems.Add(ConvertKelvinToCelsius(weatherData.main.temp).ToString("0.0") + "°");
+                            }
+                            else
+                            {
+                                listItem.SubItems[listViewFavorites.Columns.Count].Text = ConvertKelvinToCelsius(weatherData.main.temp).ToString("0.0") + "°";
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Error updating temperature for {city}: {ex.Message}");
+                        }
+                    }
+                }
+            }
+        }
     }
-    
 }

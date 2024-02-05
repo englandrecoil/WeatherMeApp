@@ -30,6 +30,8 @@
         {
             this.weatherInfoGroupBox = new System.Windows.Forms.GroupBox();
             this.weatherInfoCurrent = new System.Windows.Forms.GroupBox();
+            this.addButton = new System.Windows.Forms.Button();
+            this.favoriteIcon = new System.Windows.Forms.PictureBox();
             this.buttonRecommendations = new System.Windows.Forms.Button();
             this.visibilityInfo = new System.Windows.Forms.Label();
             this.VisibilityLabel = new System.Windows.Forms.Label();
@@ -60,10 +62,20 @@
             this.cityField = new System.Windows.Forms.TextBox();
             this.cityFieldTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.favoritesGroupBox = new System.Windows.Forms.GroupBox();
+            this.favoritesGroup = new System.Windows.Forms.GroupBox();
+            this.listViewFavorites = new System.Windows.Forms.ListView();
+            this.columnCity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnTemperature = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.buttonRefresh = new System.Windows.Forms.Button();
+            this.deleteButton = new System.Windows.Forms.Button();
+            this.recommendationLabelText = new System.Windows.Forms.Label();
             this.weatherInfoGroupBox.SuspendLayout();
             this.weatherInfoCurrent.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.favoriteIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureIcon)).BeginInit();
             this.cityFieldTableLayout.SuspendLayout();
+            this.favoritesGroupBox.SuspendLayout();
+            this.favoritesGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // weatherInfoGroupBox
@@ -78,6 +90,8 @@
             // 
             // weatherInfoCurrent
             // 
+            this.weatherInfoCurrent.Controls.Add(this.addButton);
+            this.weatherInfoCurrent.Controls.Add(this.favoriteIcon);
             this.weatherInfoCurrent.Controls.Add(this.buttonRecommendations);
             this.weatherInfoCurrent.Controls.Add(this.visibilityInfo);
             this.weatherInfoCurrent.Controls.Add(this.VisibilityLabel);
@@ -109,6 +123,35 @@
             this.weatherInfoCurrent.Size = new System.Drawing.Size(481, 532);
             this.weatherInfoCurrent.TabIndex = 0;
             this.weatherInfoCurrent.TabStop = false;
+            // 
+            // addButton
+            // 
+            this.addButton.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.addButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.addButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.addButton.FlatAppearance.BorderSize = 0;
+            this.addButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.addButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addButton.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addButton.ForeColor = System.Drawing.Color.White;
+            this.addButton.Location = new System.Drawing.Point(406, 3);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(75, 28);
+            this.addButton.TabIndex = 26;
+            this.addButton.Text = "FAVORITES";
+            this.addButton.UseVisualStyleBackColor = false;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
+            // 
+            // favoriteIcon
+            // 
+            this.favoriteIcon.BackColor = System.Drawing.Color.Transparent;
+            this.favoriteIcon.Image = global::WeatherMeApp.Properties.Resources.favorite_icon;
+            this.favoriteIcon.Location = new System.Drawing.Point(372, 5);
+            this.favoriteIcon.Name = "favoriteIcon";
+            this.favoriteIcon.Size = new System.Drawing.Size(0, 0);
+            this.favoriteIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.favoriteIcon.TabIndex = 25;
+            this.favoriteIcon.TabStop = false;
             // 
             // buttonRecommendations
             // 
@@ -344,7 +387,7 @@
             this.cityInfo.Font = new System.Drawing.Font("Yu Gothic UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cityInfo.Location = new System.Drawing.Point(171, 0);
             this.cityInfo.Name = "cityInfo";
-            this.cityInfo.Size = new System.Drawing.Size(273, 36);
+            this.cityInfo.Size = new System.Drawing.Size(223, 36);
             this.cityInfo.TabIndex = 2;
             this.cityInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -360,7 +403,7 @@
             // 
             // pictureIcon
             // 
-            this.pictureIcon.BackColor = System.Drawing.Color.LightGray;
+            this.pictureIcon.BackColor = System.Drawing.Color.Silver;
             this.pictureIcon.Location = new System.Drawing.Point(0, 0);
             this.pictureIcon.Name = "pictureIcon";
             this.pictureIcon.Size = new System.Drawing.Size(91, 91);
@@ -415,11 +458,100 @@
             // 
             // favoritesGroupBox
             // 
+            this.favoritesGroupBox.Controls.Add(this.favoritesGroup);
             this.favoritesGroupBox.Location = new System.Drawing.Point(806, 138);
             this.favoritesGroupBox.Name = "favoritesGroupBox";
             this.favoritesGroupBox.Size = new System.Drawing.Size(533, 639);
             this.favoritesGroupBox.TabIndex = 4;
             this.favoritesGroupBox.TabStop = false;
+            // 
+            // favoritesGroup
+            // 
+            this.favoritesGroup.Controls.Add(this.listViewFavorites);
+            this.favoritesGroup.Controls.Add(this.buttonRefresh);
+            this.favoritesGroup.Controls.Add(this.deleteButton);
+            this.favoritesGroup.Controls.Add(this.recommendationLabelText);
+            this.favoritesGroup.Location = new System.Drawing.Point(27, 19);
+            this.favoritesGroup.Name = "favoritesGroup";
+            this.favoritesGroup.Size = new System.Drawing.Size(479, 604);
+            this.favoritesGroup.TabIndex = 1;
+            this.favoritesGroup.TabStop = false;
+            // 
+            // listViewFavorites
+            // 
+            this.listViewFavorites.Alignment = System.Windows.Forms.ListViewAlignment.Default;
+            this.listViewFavorites.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.listViewFavorites.BackColor = System.Drawing.Color.White;
+            this.listViewFavorites.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnCity,
+            this.columnTemperature});
+            this.listViewFavorites.Font = new System.Drawing.Font("Yu Gothic UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.listViewFavorites.FullRowSelect = true;
+            this.listViewFavorites.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.listViewFavorites.HideSelection = false;
+            this.listViewFavorites.Location = new System.Drawing.Point(36, 72);
+            this.listViewFavorites.Name = "listViewFavorites";
+            this.listViewFavorites.Size = new System.Drawing.Size(395, 462);
+            this.listViewFavorites.TabIndex = 30;
+            this.listViewFavorites.UseCompatibleStateImageBehavior = false;
+            this.listViewFavorites.View = System.Windows.Forms.View.Details;
+            // 
+            // columnCity
+            // 
+            this.columnCity.Text = "City";
+            this.columnCity.Width = 218;
+            // 
+            // columnTemperature
+            // 
+            this.columnTemperature.Text = "Temperature";
+            this.columnTemperature.Width = 169;
+            // 
+            // buttonRefresh
+            // 
+            this.buttonRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonRefresh.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.buttonRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonRefresh.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.buttonRefresh.FlatAppearance.BorderSize = 0;
+            this.buttonRefresh.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.buttonRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRefresh.Font = new System.Drawing.Font("Yu Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonRefresh.ForeColor = System.Drawing.Color.Transparent;
+            this.buttonRefresh.Location = new System.Drawing.Point(117, 562);
+            this.buttonRefresh.Name = "buttonRefresh";
+            this.buttonRefresh.Size = new System.Drawing.Size(244, 36);
+            this.buttonRefresh.TabIndex = 29;
+            this.buttonRefresh.Text = "REFRESH";
+            this.buttonRefresh.UseVisualStyleBackColor = false;
+            this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
+            // 
+            // deleteButton
+            // 
+            this.deleteButton.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.deleteButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.deleteButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.deleteButton.FlatAppearance.BorderSize = 0;
+            this.deleteButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.deleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deleteButton.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.deleteButton.ForeColor = System.Drawing.Color.White;
+            this.deleteButton.Location = new System.Drawing.Point(382, 2);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(97, 30);
+            this.deleteButton.TabIndex = 28;
+            this.deleteButton.Text = "Delete selected";
+            this.deleteButton.UseVisualStyleBackColor = false;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
+            // recommendationLabelText
+            // 
+            this.recommendationLabelText.Font = new System.Drawing.Font("Yu Gothic UI", 18F, System.Drawing.FontStyle.Bold);
+            this.recommendationLabelText.Location = new System.Drawing.Point(-3, 0);
+            this.recommendationLabelText.Name = "recommendationLabelText";
+            this.recommendationLabelText.Size = new System.Drawing.Size(231, 37);
+            this.recommendationLabelText.TabIndex = 0;
+            this.recommendationLabelText.Text = "Your favorites here:";
             // 
             // mainPageForm
             // 
@@ -439,9 +571,12 @@
             this.Text = "mainPageForm";
             this.weatherInfoGroupBox.ResumeLayout(false);
             this.weatherInfoCurrent.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.favoriteIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureIcon)).EndInit();
             this.cityFieldTableLayout.ResumeLayout(false);
             this.cityFieldTableLayout.PerformLayout();
+            this.favoritesGroupBox.ResumeLayout(false);
+            this.favoritesGroup.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -480,5 +615,14 @@
         private System.Windows.Forms.Label feelsLikeLabel;
         private System.Windows.Forms.Button buttonRecommendations;
         private System.Windows.Forms.GroupBox favoritesGroupBox;
+        private System.Windows.Forms.PictureBox favoriteIcon;
+        private System.Windows.Forms.Button addButton;
+        private System.Windows.Forms.GroupBox favoritesGroup;
+        private System.Windows.Forms.Label recommendationLabelText;
+        private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.Button buttonRefresh;
+        private System.Windows.Forms.ListView listViewFavorites;
+        private System.Windows.Forms.ColumnHeader columnCity;
+        private System.Windows.Forms.ColumnHeader columnTemperature;
     }
 }
