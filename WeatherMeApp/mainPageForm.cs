@@ -22,8 +22,13 @@ namespace WeatherMeApp
             InitializeComponent();
             cityField.Text = "Type city name";
             cityField.ForeColor = Color.Gray;
+            this.FormClosing += mainForm_FormClosing;
 
+        }
 
+        private void mainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
 
 
@@ -94,7 +99,8 @@ namespace WeatherMeApp
         private async void getWeatherAsync()
         {
             using (HttpClient httpClient = new HttpClient())
-            {
+            {   
+                httpClient.Timeout = TimeSpan.FromSeconds(60);
                 string url = $"{APIUrl}?q={cityField.Text}&appid={APIKey}";
 
                 HttpResponseMessage response = await httpClient.GetAsync(url);
@@ -130,8 +136,11 @@ namespace WeatherMeApp
         }
 
         private void buttonSearch_Click(object sender, EventArgs e)
-        {
-            getWeatherAsync();
+        {   
+            if (cityField.Text != "Type city name") {
+                getWeatherAsync();
+            }
+            else { return; }
         }
 
         // Recommendations
@@ -188,29 +197,33 @@ namespace WeatherMeApp
         }
 
         private void buttonRecommendations_Click(object sender, EventArgs e)
-        {
-            try
+        {   
+            if (cityField.Text != "Type city name")
             {
-                string city = cityField.Text;
-                string url = $"{APIUrl}?q={city}&appid={APIKey}";
-
-                using (HttpClient httpClient = new HttpClient())
+                try
                 {
-                    HttpResponseMessage response = httpClient.GetAsync(url).Result;
-                    response.EnsureSuccessStatusCode();
+                    string city = cityField.Text;
+                    string url = $"{APIUrl}?q={city}&appid={APIKey}";
 
-                    string json = response.Content.ReadAsStringAsync().Result;
-                    weatherInfo.root weatherData = JsonConvert.DeserializeObject<weatherInfo.root>(json);
+                    using (HttpClient httpClient = new HttpClient())
+                    {
+                        HttpResponseMessage response = httpClient.GetAsync(url).Result;
+                        response.EnsureSuccessStatusCode();
 
-                    string recommendations = GetWeatherRecommendations(weatherData);
+                        string json = response.Content.ReadAsStringAsync().Result;
+                        weatherInfo.root weatherData = JsonConvert.DeserializeObject<weatherInfo.root>(json);
 
-                    MessageBox.Show(recommendations, "Weather recommendations", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        string recommendations = GetWeatherRecommendations(weatherData);
+
+                        MessageBox.Show(recommendations, "Weather recommendations", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error getting recommendations: " + ex.Message);
                 }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error getting recommendations: " + ex.Message);
-            }
+            else { return; }
         }
 
         private void addButton_Click(object sender, EventArgs e)
