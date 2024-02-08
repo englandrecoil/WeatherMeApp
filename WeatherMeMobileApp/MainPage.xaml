@@ -1,36 +1,67 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WeatherMeMobileApp.MainPage">
+             x:Class="WeatherMeMobileApp.MainPage"
+             Shell.NavBarIsVisible="False"
+                 >
+    <Grid>
+        <Image Source="background_final.jpg" Aspect="AspectFill"></Image>
+        <StackLayout Margin="20">
+            <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" HorizontalOptions="Center" HeightRequest="80">
+                <Image  HeightRequest="65" Margin="0,0,12,0" IsVisible="True" Source="sun_icon_fin.png"/>
+                <Label Text="WeatherMe" VerticalTextAlignment="Center" TextColor="White" FontSize="30" ></Label>
 
-    <ScrollView>
-        <VerticalStackLayout
-            Padding="30,0"
-            Spacing="25">
-            <Image
-                Source="dotnet_bot.png"
-                HeightRequest="185"
-                Aspect="AspectFit"
-                SemanticProperties.Description="dot net bot in a race car number eight" />
+            </StackLayout>
 
-            <Label
-                Text="Hello, User!"
-                Style="{StaticResource Headline}"
-                SemanticProperties.HeadingLevel="Level1" />
+            <StackLayout Margin="0,80">
+                <Label FontSize="12" Text="LET'S GET STARTED" TextColor="White" FontFamily="OpenSans"/>
+                <Label Text="Create an Account" FontSize="24" TextColor="White" FontFamily="OpenSans"/>
+            </StackLayout>
 
-            <Label
-                Text="It's finally working!"
-                Style="{StaticResource SubHeadline}"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
+            <StackLayout>
+                <Label Text="Username" FontSize="16" TextColor="White" FontFamily="OpenSansRegular"/>
+                <Grid Margin="0,5">
+                    <Frame Opacity="0.3" BackgroundColor="White" CornerRadius="5"/>
+                    <Entry Placeholder ="Enter Username" BackgroundColor="Transparent" 
+                           TextColor="White" Margin="5,0" PlaceholderColor="LightGray" 
+                           FontFamily="OpenSans"/>
+                </Grid>
 
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me" 
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Fill" />
-        </VerticalStackLayout>
-    </ScrollView>
+                <Label Text="Email" FontSize="16" TextColor="White" FontFamily="OpenSansRegular"/>
+                <Grid Margin="0,5">
+                    <Frame Opacity="0.3" BackgroundColor="White" CornerRadius="5"/>
+                    <Entry Placeholder ="Enter Email" BackgroundColor="Transparent" 
+                           TextColor="White" Margin="5,0" PlaceholderColor="LightGray" 
+                           FontFamily="OpenSans"/>
+                </Grid>
+
+                <Label Text="Password" FontSize="16" TextColor="White" FontFamily="OpenSansRegular"/>
+                <Grid Margin="0,5">
+                    <Frame Opacity="0.3" BackgroundColor="White" CornerRadius="5"/>
+                    <Entry Placeholder ="Enter Password" BackgroundColor="Transparent" 
+                           TextColor="White" Margin="5,0" PlaceholderColor="LightGray" IsPassword="True" 
+                           FontFamily="OpenSans"/>
+                </Grid>
+            </StackLayout>
+
+            <StackLayout>
+                <Button Margin="0,15" BackgroundColor="white" Text="GET STARTED" 
+                        TextColor="Black" FontFamily="OpenSansBold" FontSize="17"></Button>
+            </StackLayout>
+
+            <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" HorizontalOptions="Center">
+                <Label Text="Or" Margin="0,10" TextColor="White"></Label>
+            </StackLayout>
+            
+            <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" HorizontalOptions="Center">
+                <Label FontFamily="OpenSansRegular" Text="Already have an account?"
+                       TextColor="White"/>
+                <Label FontFamily="OpenSansBold" Text="LOGIN HERE" TextColor="White" 
+                       TextDecorations="Underline" Margin="5,0"/>
+            </StackLayout>
+            
+        </StackLayout>
+        
+    </Grid>
 
 </ContentPage>
