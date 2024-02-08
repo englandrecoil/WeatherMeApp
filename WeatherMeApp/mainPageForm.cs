@@ -100,7 +100,7 @@ namespace WeatherMeApp
         {
             using (HttpClient httpClient = new HttpClient())
             {   
-                httpClient.Timeout = TimeSpan.FromSeconds(60);
+                httpClient.Timeout = TimeSpan.FromSeconds(180);
                 string url = $"{APIUrl}?q={cityField.Text}&appid={APIKey}";
 
                 HttpResponseMessage response = await httpClient.GetAsync(url);
