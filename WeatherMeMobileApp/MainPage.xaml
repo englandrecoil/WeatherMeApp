@@ -24,7 +24,7 @@
                     <Frame Opacity="0.3" BackgroundColor="White" CornerRadius="5"/>
                     <Entry Placeholder ="Enter Username" BackgroundColor="Transparent" 
                            TextColor="White" Margin="5,0" PlaceholderColor="LightGray" 
-                           FontFamily="OpenSans"/>
+                           FontFamily="OpenSans" x:Name="nameFieldReg"/>
                 </Grid>
 
                 <Label Text="Email" FontSize="16" TextColor="White" FontFamily="OpenSansRegular"/>
@@ -32,7 +32,7 @@
                     <Frame Opacity="0.3" BackgroundColor="White" CornerRadius="5"/>
                     <Entry Placeholder ="Enter Email" BackgroundColor="Transparent" 
                            TextColor="White" Margin="5,0" PlaceholderColor="LightGray" 
-                           FontFamily="OpenSans"/>
+                           FontFamily="OpenSans" x:Name="emailFieldReg"/>
                 </Grid>
 
                 <Label Text="Password" FontSize="16" TextColor="White" FontFamily="OpenSansRegular"/>
@@ -40,13 +40,13 @@
                     <Frame Opacity="0.3" BackgroundColor="White" CornerRadius="5"/>
                     <Entry Placeholder ="Enter Password" BackgroundColor="Transparent" 
                            TextColor="White" Margin="5,0" PlaceholderColor="LightGray" IsPassword="True" 
-                           FontFamily="OpenSans"/>
+                           FontFamily="OpenSans" x:Name="passwordFieldReg"/>
                 </Grid>
             </StackLayout>
 
             <StackLayout>
                 <Button Margin="0,15" BackgroundColor="white" Text="GET STARTED" 
-                        TextColor="Black" FontFamily="OpenSansBold" FontSize="17"></Button>
+                        TextColor="Black" FontFamily="OpenSansBold" FontSize="17" Clicked="ButtonReg"></Button>
             </StackLayout>
 
             <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" HorizontalOptions="Center">
@@ -57,7 +57,11 @@
                 <Label FontFamily="OpenSansRegular" Text="Already have an account?"
                        TextColor="White"/>
                 <Label FontFamily="OpenSansBold" Text="LOGIN HERE" TextColor="White" 
-                       TextDecorations="Underline" Margin="5,0"/>
+                       TextDecorations="Underline" Margin="5,0">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="LinkToLoginTapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
             </StackLayout>
             
         </StackLayout>
