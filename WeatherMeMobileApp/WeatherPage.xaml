@@ -2,11 +2,66 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WeatherMeMobileApp.WeatherPage"
-             Title="WeatherPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Shell.NavBarIsVisible="False"
+             >
+    <ScrollView>
+        <Grid>
+            <Image Source="background_final.jpg" Aspect="AspectFill"/>
+            <StackLayout Margin="20">
+                <StackLayout VerticalOptions="Start" Orientation="Horizontal" HorizontalOptions="Center" HeightRequest="80">
+                    <Image  HeightRequest="65" Margin="0,0,12,0" IsVisible="True" Source="sun_icon_fin.png"/>
+                    <Label Text="WeatherMe" VerticalTextAlignment="Center" TextColor="White" FontSize="30" ></Label>
+
+                </StackLayout>
+
+                <StackLayout VerticalOptions="Fill" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                    <Grid Margin="0,5">
+                        <Frame Opacity="0.3" BackgroundColor="White" CornerRadius="5" WidthRequest="320"/>
+                        <Entry Placeholder ="Type city name" BackgroundColor="Transparent" 
+                           TextColor="White" Margin="5,0" PlaceholderColor="LightGray" 
+                           FontFamily="OpenSansRegular" FontSize="20"/>
+                    </Grid>
+                    <ImageButton Source="search_icon.png" HeightRequest="50" WidthRequest="50" Margin="10,0,0,0"></ImageButton>
+                </StackLayout>
+
+                <Grid RowDefinitions="50, Auto, Auto" ColumnDefinitions="50, Auto, Auto" ColumnSpacing="50" Margin="0,35,0,0">
+                    <Image Source="sun_icon_fin.png" Grid.Row="0" Grid.Column="0" HeightRequest="75" WidthRequest="75"/>
+                    <Label Text="City:" Grid.Row="0" Grid.Column="1" FontSize="Medium" TextColor="White"/>
+                    <Label Text="Datetime:" Grid.Row="1" Grid.Column="1" Margin="0,-15,0,0" FontSize="Medium" TextColor="White"/>
+                    <Label Text="N/A" Grid.Row="1" Grid.Column="2" FontSize="Medium" Margin="-45,-15,0,0" TextColor="White"/>
+                    <Label Text="N/A" Grid.Row="0" Grid.Column="2" FontSize="Medium" Margin="-45,0,0,15" TextColor="White"/>
+                </Grid>
+                
+                <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="115,75,Auto,75" ColumnSpacing="10" Margin="-10,30,0,0" RowSpacing="40">
+                    <Label Grid.Row="0" Grid.Column="0" Text="Temperature:" BackgroundColor="White" VerticalTextAlignment="Center" FontSize="Medium"/>
+                    <Label Grid.Row="0" Grid.Column="1" BackgroundColor="White" Text="N/A" VerticalTextAlignment="Center" FontSize="Medium" />
+                    <Label Grid.Row="0" Grid.Column="2" BackgroundColor="White" Text="Feels like:" VerticalTextAlignment="Center" FontSize="Medium" />
+                    <Label Grid.Row="0" Grid.Column="3" BackgroundColor="White" Text="N/A" VerticalTextAlignment="Center" FontSize="Medium"/>
+                    <Label Grid.Row="1" Grid.Column="0"  BackgroundColor="White" Text="Wind speed:" VerticalTextAlignment="Center" FontSize="Medium"/>
+                    <Label Grid.Row="1" Grid.Column="1"  BackgroundColor="White" Text="N/A" VerticalTextAlignment="Center" FontSize="Medium"/>
+                    <Label Grid.Row="1" Grid.Column="2"  BackgroundColor="White" Text="Wind Dir:" VerticalTextAlignment="Center" FontSize="Medium"/>
+                    <Label Grid.Row="1" Grid.Column="3"  BackgroundColor="White" Text="N/A" VerticalTextAlignment="Center" FontSize="Medium"/>
+                    <Label Grid.Row="2" Grid.Column="0"  BackgroundColor="White" Text="Sunrise:" VerticalTextAlignment="Center" FontSize="Medium"/>
+                    <Label Grid.Row="2" Grid.Column="1"  BackgroundColor="White" Text="N/A" VerticalTextAlignment="Center" FontSize="Medium"/>
+                    <Label Grid.Row="2" Grid.Column="2"  BackgroundColor="White" Text="Sunset:" VerticalTextAlignment="Center" FontSize="Medium" />
+                    <Label Grid.Row="2" Grid.Column="3"  BackgroundColor="White" Text="N/A" VerticalTextAlignment="Center" FontSize="Medium" />
+                    <Label Grid.Row="3" Grid.Column="0"  BackgroundColor="White" Text="Pressure:" VerticalTextAlignment="Center" FontSize="Medium" />
+                    <Label Grid.Row="3" Grid.Column="1"  BackgroundColor="White" Text="N/A:" VerticalTextAlignment="Center" FontSize="Medium" />
+                    <Label Grid.Row="3" Grid.Column="2"  BackgroundColor="White" Text="Cloudiness:" VerticalTextAlignment="Center" FontSize="Medium" />
+                    <Label Grid.Row="3" Grid.Column="3"  BackgroundColor="White" Text="N/A" VerticalTextAlignment="Center" FontSize="Medium" />
+                    <Label Grid.Row="4" Grid.Column="0"  BackgroundColor="White" Text="Humidity:" VerticalTextAlignment="Center" FontSize="Medium" />
+                    <Label Grid.Row="4" Grid.Column="1"  BackgroundColor="White" Text="N/A:" VerticalTextAlignment="Center" FontSize="Medium" />
+                    <Label Grid.Row="4" Grid.Column="2"  BackgroundColor="White" Text="Visibility:" VerticalTextAlignment="Center" FontSize="Medium" />
+                    <Label Grid.Row="4" Grid.Column="3"  BackgroundColor="White" Text="N/A:" VerticalTextAlignment="Center" FontSize="Medium" />
+                </Grid>
+                    
+                <Button Margin="0,35,0,0" BackgroundColor="white" Text="CHECK RECOMMENDATIONS" 
+                        TextColor="Black" FontFamily="OpenSansBold" FontSize="17"/>
+
+            </StackLayout>
+                
+        </Grid>
+            
+    </ScrollView>
+
 </ContentPage>

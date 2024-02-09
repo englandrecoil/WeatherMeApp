@@ -21,7 +21,7 @@
 
             <StackLayout Margin="0,50,0,0">
                 <Label Text="Email" FontSize="16" TextColor="White" FontFamily="OpenSansRegular"/>
-                <Grid Margin="0,15">
+                <Grid Margin="0,5">
                     <Frame Opacity="0.3" BackgroundColor="White" CornerRadius="5"/>
                     <Entry Placeholder ="Enter Email" BackgroundColor="Transparent" 
                            TextColor="White" Margin="5,0" PlaceholderColor="LightGray" 
