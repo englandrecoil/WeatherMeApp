@@ -9,23 +9,22 @@ namespace WeatherMeMobileApp
             InitializeComponent();
         }
 
-
         private void ButtonReg(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(nameFieldReg.Text) | string.IsNullOrWhiteSpace(emailFieldReg.Text) 
                 | string.IsNullOrWhiteSpace(passwordFieldReg.Text))
             {
-                DisplayAlert("Ошибка", "Все поля должны быть заполнены", "OK");
+                DisplayAlert("Error", "All fields must be filled in", "OK");
                 return;
             }
             if (!IsValidEmail(emailFieldReg.Text))
             {
-                DisplayAlert("Ошибка", "Введите корректный адрес электронной почты", "OK");
+                DisplayAlert("Error", "Enter a valid e-mail address", "OK");
                 return;
             }
             if (!IsValidPassword(passwordFieldReg.Text))
             {
-                DisplayAlert("Ошибка", "Пароль должен содержать минимум 8 символов", "OK");
+                DisplayAlert("Error", "Password must contain at least 8 characters", "OK");
                 return;
             }
             else
@@ -35,7 +34,6 @@ namespace WeatherMeMobileApp
 
             }
         }
-
         private void LinkToLoginTapped(object sender, EventArgs e)
         {
             LoginPage loginPage = new LoginPage();
@@ -46,7 +44,6 @@ namespace WeatherMeMobileApp
         {
             return password.Length >= 8;
         }
-
         private bool IsValidEmail(string email)
         {
             string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";

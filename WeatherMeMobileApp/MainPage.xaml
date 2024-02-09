@@ -4,7 +4,8 @@
              x:Class="WeatherMeMobileApp.MainPage"
              Shell.NavBarIsVisible="False"
                  >
-    <Grid>
+    <ScrollView>
+        <Grid>
         <Image Source="background_final.jpg" Aspect="AspectFill"></Image>
         <StackLayout Margin="20">
             <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" HorizontalOptions="Center" HeightRequest="80">
@@ -13,12 +14,12 @@
 
             </StackLayout>
 
-            <StackLayout Margin="0,80">
+            <StackLayout Margin="0,80,0,0">
                 <Label FontSize="12" Text="LET'S GET STARTED" TextColor="White" FontFamily="OpenSans"/>
                 <Label Text="Create an Account" FontSize="24" TextColor="White" FontFamily="OpenSans"/>
             </StackLayout>
 
-            <StackLayout>
+            <StackLayout Margin="0,50,0,0">
                 <Label Text="Username" FontSize="16" TextColor="White" FontFamily="OpenSansRegular"/>
                 <Grid Margin="0,5">
                     <Frame Opacity="0.3" BackgroundColor="White" CornerRadius="5"/>
@@ -67,5 +68,7 @@
         </StackLayout>
         
     </Grid>
+    </ScrollView>
+
 
 </ContentPage>

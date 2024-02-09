@@ -2,11 +2,64 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WeatherMeMobileApp.LoginPage"
-             Title="LoginPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Shell.NavBarIsVisible="False"
+                 >
+    <ScrollView>
+        <Grid>
+        <Image Source="background_final.jpg" Aspect="AspectFill"></Image>
+        <StackLayout Margin="20">
+            <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" HorizontalOptions="Center" HeightRequest="80">
+                <Image  HeightRequest="65" Margin="0,0,12,0" IsVisible="True" Source="sun_icon_fin.png"/>
+                <Label Text="WeatherMe" VerticalTextAlignment="Center" TextColor="White" FontSize="30" ></Label>
+
+            </StackLayout>
+
+            <StackLayout Margin="0,60,0,0">
+                <Label FontSize="12" Text="WELCOME BACK" TextColor="White" FontFamily="OpenSans"/>
+                <Label Text="Login to Account" FontSize="24" TextColor="White" FontFamily="OpenSans"/>
+            </StackLayout>
+
+            <StackLayout Margin="0,50,0,0">
+                <Label Text="Email" FontSize="16" TextColor="White" FontFamily="OpenSansRegular"/>
+                <Grid Margin="0,15">
+                    <Frame Opacity="0.3" BackgroundColor="White" CornerRadius="5"/>
+                    <Entry Placeholder ="Enter Email" BackgroundColor="Transparent" 
+                           TextColor="White" Margin="5,0" PlaceholderColor="LightGray" 
+                           FontFamily="OpenSans" x:Name="emailFieldLogin"/>
+                </Grid>
+
+                <Label Text="Password" FontSize="16" TextColor="White" FontFamily="OpenSansRegular"/>
+                <Grid Margin="0,5">
+                    <Frame Opacity="0.3" BackgroundColor="White" CornerRadius="5"/>
+                    <Entry Placeholder ="Enter Password" BackgroundColor="Transparent" 
+                           TextColor="White" Margin="5,0" PlaceholderColor="LightGray" IsPassword="True" 
+                           FontFamily="OpenSans" x:Name="passwordFieldLogin"/>
+                </Grid>
+            </StackLayout>
+
+            <StackLayout>
+                <Button Margin="0,15" BackgroundColor="white" Text="LOGIN" 
+                        TextColor="Black" FontFamily="OpenSansBold" FontSize="17" Clicked="ButtonLogin"></Button>
+            </StackLayout>
+
+            <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" HorizontalOptions="Center">
+                <Label Text="Or" Margin="0,10" TextColor="White"></Label>
+            </StackLayout>
+
+            <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" HorizontalOptions="Center" HeightRequest="130">
+                <Label FontFamily="OpenSansRegular" Text="Don't have an account?"
+                       TextColor="White"/>
+                <Label FontFamily="OpenSansBold" Text="REGISTER HERE" TextColor="White" 
+                       TextDecorations="Underline" Margin="5,0">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="LinkToRegisterTapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+
+        </StackLayout>
+
+    </Grid>
+    </ScrollView>
+
 </ContentPage>
