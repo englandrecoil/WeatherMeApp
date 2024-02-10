@@ -19,44 +19,65 @@
                         <Frame Opacity="0.3" BackgroundColor="White" CornerRadius="5" WidthRequest="320"/>
                         <Entry Placeholder ="Type city name" BackgroundColor="Transparent" 
                            TextColor="White" Margin="5,0" PlaceholderColor="LightGray" 
-                           FontFamily="OpenSansRegular" FontSize="20"/>
+                           FontFamily="OpenSansRegular" FontSize="20" x:Name="cityField"/>
                     </Grid>
-                    <ImageButton Source="search_icon.png" HeightRequest="50" WidthRequest="50" Margin="10,0,0,0"></ImageButton>
+                    <Button BackgroundColor ="White" Text="Search" Clicked="Button_Clicked"/>
                 </StackLayout>
 
-                <Grid RowDefinitions="50, Auto, Auto" ColumnDefinitions="50, Auto, Auto" ColumnSpacing="50" Margin="0,35,0,0">
-                    <Image Source="sun_icon_fin.png" Grid.Row="0" Grid.Column="0" HeightRequest="75" WidthRequest="75"/>
-                    <Label Text="City:" Grid.Row="0" Grid.Column="1" FontSize="Medium" TextColor="White"/>
-                    <Label Text="Datetime:" Grid.Row="1" Grid.Column="1" Margin="0,-15,0,0" FontSize="Medium" TextColor="White"/>
-                    <Label Text="N/A" Grid.Row="1" Grid.Column="2" FontSize="Medium" Margin="-45,-15,0,0" TextColor="White"/>
-                    <Label Text="N/A" Grid.Row="0" Grid.Column="2" FontSize="Medium" Margin="-45,0,0,15" TextColor="White"/>
+                <Grid RowDefinitions="50, Auto, Auto" ColumnDefinitions="50, Auto, Auto" ColumnSpacing="30" Margin="0,35,0,0">
+                    <Image Source="sun_icon_fin.png" Grid.Row="0" Grid.Column="0" HeightRequest="75" WidthRequest="75" x:Name="pictureIcon"/>
+                    <Label Text="City:" Grid.Row="0" Grid.Column="1" FontSize="Medium" TextColor="White" x:Name="cityLabel" Margin="0,0,40,0"/>
+                    <Label Text="Datetime:" Grid.Row="1" Grid.Column="1" Margin="0,-15,20,0" FontSize="Medium" TextColor="White" x:Name="datetimeLabel"/>
+                    <Label Text="" Grid.Row="1" Grid.Column="2" FontSize="Medium" Margin="-45,-15,0,0" TextColor="White" x:Name="datetimeInfo"/>
+                    <Label Text="" Grid.Row="0" Grid.Column="2" FontSize="Medium" Margin="-90,0,0,15" TextColor="White" x:Name="cityInfo"/>
                 </Grid>
                 
-                <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="115,75,Auto,75" ColumnSpacing="10" Margin="-10,30,0,0" RowSpacing="40">
-                    <Label Grid.Row="0" Grid.Column="0" Text="Temperature:" BackgroundColor="White" VerticalTextAlignment="Center" FontSize="Medium"/>
-                    <Label Grid.Row="0" Grid.Column="1" BackgroundColor="White" Text="N/A" VerticalTextAlignment="Center" FontSize="Medium" />
-                    <Label Grid.Row="0" Grid.Column="2" BackgroundColor="White" Text="Feels like:" VerticalTextAlignment="Center" FontSize="Medium" />
-                    <Label Grid.Row="0" Grid.Column="3" BackgroundColor="White" Text="N/A" VerticalTextAlignment="Center" FontSize="Medium"/>
-                    <Label Grid.Row="1" Grid.Column="0"  BackgroundColor="White" Text="Wind speed:" VerticalTextAlignment="Center" FontSize="Medium"/>
-                    <Label Grid.Row="1" Grid.Column="1"  BackgroundColor="White" Text="N/A" VerticalTextAlignment="Center" FontSize="Medium"/>
-                    <Label Grid.Row="1" Grid.Column="2"  BackgroundColor="White" Text="Wind Dir:" VerticalTextAlignment="Center" FontSize="Medium"/>
-                    <Label Grid.Row="1" Grid.Column="3"  BackgroundColor="White" Text="N/A" VerticalTextAlignment="Center" FontSize="Medium"/>
-                    <Label Grid.Row="2" Grid.Column="0"  BackgroundColor="White" Text="Sunrise:" VerticalTextAlignment="Center" FontSize="Medium"/>
-                    <Label Grid.Row="2" Grid.Column="1"  BackgroundColor="White" Text="N/A" VerticalTextAlignment="Center" FontSize="Medium"/>
-                    <Label Grid.Row="2" Grid.Column="2"  BackgroundColor="White" Text="Sunset:" VerticalTextAlignment="Center" FontSize="Medium" />
-                    <Label Grid.Row="2" Grid.Column="3"  BackgroundColor="White" Text="N/A" VerticalTextAlignment="Center" FontSize="Medium" />
-                    <Label Grid.Row="3" Grid.Column="0"  BackgroundColor="White" Text="Pressure:" VerticalTextAlignment="Center" FontSize="Medium" />
-                    <Label Grid.Row="3" Grid.Column="1"  BackgroundColor="White" Text="N/A:" VerticalTextAlignment="Center" FontSize="Medium" />
-                    <Label Grid.Row="3" Grid.Column="2"  BackgroundColor="White" Text="Cloudiness:" VerticalTextAlignment="Center" FontSize="Medium" />
-                    <Label Grid.Row="3" Grid.Column="3"  BackgroundColor="White" Text="N/A" VerticalTextAlignment="Center" FontSize="Medium" />
-                    <Label Grid.Row="4" Grid.Column="0"  BackgroundColor="White" Text="Humidity:" VerticalTextAlignment="Center" FontSize="Medium" />
-                    <Label Grid.Row="4" Grid.Column="1"  BackgroundColor="White" Text="N/A:" VerticalTextAlignment="Center" FontSize="Medium" />
-                    <Label Grid.Row="4" Grid.Column="2"  BackgroundColor="White" Text="Visibility:" VerticalTextAlignment="Center" FontSize="Medium" />
-                           VerticalTextAlignment="Center" FontSize="Medium" x:Name="sunriseInfo"/>
+                <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="Auto,Auto,Auto,Auto" ColumnSpacing="10" Margin="-10,30,0,0" RowSpacing="40">
+                    <Label TextColor="White" Grid.Row="0" Grid.Column="0" Text="Temperature:" 
+                           VerticalTextAlignment="Center" FontSize="Medium" x:Name="temperatureLabel" />
+                    <Label TextColor="White" Grid.Row="0" Grid.Column="1"  Text="" 
+                           VerticalTextAlignment="Center" FontSize="Medium" x:Name="temperatureInfo" Padding="0,0,0,0"/>
+                    <Label TextColor="White" Grid.Row="0" Grid.Column="2"  Text="Feels like:" 
+                           VerticalTextAlignment="Center" FontSize="Medium" x:Name="feelsLikeLabel" WidthRequest="85" HorizontalOptions="Start"/>
+                    <Label TextColor="White" Grid.Row="0" Grid.Column="3"  Text="" 
+                           VerticalTextAlignment="Center" FontSize="Medium" x:Name="feelsLikeInfo" Margin="-15,0,0,0"/>
+                    <Label TextColor="White" Grid.Row="1" Grid.Column="0"  Text="Wind speed:" 
+                           VerticalTextAlignment="Center" FontSize="Medium" x:Name="windspeedLabel" />
+                    <Label TextColor="White" Grid.Row="1" Grid.Column="1"   Text="" 
+                           VerticalTextAlignment="Center" FontSize="Medium" x:Name="windspeedInfo" Margin="-10,0,0,0"/>
+                    <Label TextColor="White" Grid.Row="1" Grid.Column="2"   Text="Wind Dir:" 
+                           VerticalTextAlignment="Center" FontSize="Medium" x:Name="windDirLabel"  WidthRequest="80" HorizontalOptions="Start"/>
+                    <Label TextColor="White" Grid.Row="1" Grid.Column="3"   Text="" 
+                           VerticalTextAlignment="Center" FontSize="Medium" x:Name="windDirInfo" Margin="-20,0,0,0"/>
+                    <Label TextColor="White" Grid.Row="2" Grid.Column="0"   Text="Sunrise:" 
+                           VerticalTextAlignment="Center" FontSize="Medium" x:Name="sunriseLabel" WidthRequest="75" HorizontalOptions="Start"/>
+                    <Label TextColor="White" Grid.Row="2" Grid.Column="1"   Text="" 
+                           VerticalTextAlignment="Center" FontSize="Medium" x:Name="sunRiseInfo" Margin="-45,0,0,0"/>
+                    <Label TextColor="White" Grid.Row="2" Grid.Column="2"   Text="Sunset:" 
+                           VerticalTextAlignment="Center" FontSize="Medium" x:Name="sunsetLabel"  WidthRequest="75" HorizontalOptions="Start"/>
+                    <Label TextColor="White" Grid.Row="2" Grid.Column="3"   Text="" 
+                           VerticalTextAlignment="Center" FontSize="Medium" x:Name="sunSetInfo"  Margin="-35,0,0,0"/>
+                    <Label TextColor="White" Grid.Row="3" Grid.Column="0"   Text="Pressure:" 
+                           VerticalTextAlignment="Center" FontSize="Medium" x:Name="pressureLabel"  WidthRequest="80" HorizontalOptions="Start"/>
+                    <Label TextColor="White" Grid.Row="3" Grid.Column="1"  Text="" 
+                           VerticalTextAlignment="Center" FontSize="Medium" x:Name="pressureInfo" Margin="-35,0,35,0"/>
+                    <Label TextColor="White" Grid.Row="3" Grid.Column="2"   Text="Cloudiness:" 
+                           VerticalTextAlignment="Center" FontSize="Medium" x:Name="cloudinessLabel"/>
+                    <Label TextColor="White" Grid.Row="3" Grid.Column="3"   Text="" 
+                           VerticalTextAlignment="Center" FontSize="Medium" x:Name="cloudinessInfo"/>
+                    <Label TextColor="White" Grid.Row="4" Grid.Column="0"   Text="Humidity:" 
+                           VerticalTextAlignment="Center" FontSize="Medium" x:Name="humidityLabel" WidthRequest="85" HorizontalOptions="Start"/>
+                    <Label TextColor="White" Grid.Row="4" Grid.Column="1"   Text="" 
+                           VerticalTextAlignment="Center" FontSize="Medium" x:Name="humidityInfo" Margin="-30,0,0,0" />
+                    <Label TextColor="White" Grid.Row="4" Grid.Column="2"   Text="Visibility:" 
+                           VerticalTextAlignment="Center" FontSize="Medium" x:Name="visibilityLabel" WidthRequest="75" HorizontalOptions="Start"/>
+                    <Label TextColor="White" Grid.Row="4" Grid.Column="3"   Text="" 
+                           VerticalTextAlignment="Center" FontSize="Medium" x:Name="visibilityInfo" Margin="-20,0,0,0"/>
+
                 </Grid>
                     
                 <Button Margin="0,35,0,0" BackgroundColor="white" Text="CHECK RECOMMENDATIONS" 
-                        TextColor="Black" FontFamily="OpenSansBold" FontSize="17"/>
+                        TextColor="Black" FontFamily="OpenSansBold" FontSize="17" x:Name="buttonRecommendations"/>
 
             </StackLayout>
                 

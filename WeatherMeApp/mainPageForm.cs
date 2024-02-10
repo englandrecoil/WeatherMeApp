@@ -67,7 +67,7 @@ namespace WeatherMeApp
 
         private double ConvertPressure(double pressureHpa)
         {
-            return pressureHpa * 0.75006 / 100.0;
+            return Math.Round(pressureHpa * 0.75006);
         }
 
         DateTime convertDateTime(long seconds)
@@ -122,7 +122,7 @@ namespace WeatherMeApp
                 windDirInfo.Text = GetWindDirection(Info.wind.deg);
                 sunRiseInfo.Text = convertDateTime(Info.sys.sunrise).ToShortTimeString();
                 sunSetInfo.Text = convertDateTime(Info.sys.sunset).ToShortTimeString();
-                pressureInfo.Text = ConvertPressure(Info.main.pressure).ToString("0.##" + " mmHg");
+                pressureInfo.Text = ConvertPressure(Info.main.pressure).ToString() + " mmHg";
                 cloudinessInfo.Text = Info.clouds.all.ToString() + "%";
                 humidityInfo.Text = Info.main.humidity.ToString() + "%";
                 visibilityInfo.Text = Info.visibility.ToString() + " meters";
