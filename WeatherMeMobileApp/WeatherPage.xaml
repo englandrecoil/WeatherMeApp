@@ -21,11 +21,11 @@
                            TextColor="White" Margin="5,0" PlaceholderColor="LightGray" 
                            FontFamily="OpenSansRegular" FontSize="20" x:Name="cityField"/>
                     </Grid>
-                    <Button BackgroundColor ="White" Text="Search" Clicked="Button_Clicked"/>
+                    <ImageButton Source="search_icon.png" Clicked="Button_Clicked" WidthRequest="50" HeightRequest="50"/>
                 </StackLayout>
 
                 <Grid RowDefinitions="50, Auto, Auto" ColumnDefinitions="50, Auto, Auto" ColumnSpacing="30" Margin="0,35,0,0">
-                    <Image Source="sun_icon_fin.png" Grid.Row="0" Grid.Column="0" HeightRequest="75" WidthRequest="75" x:Name="pictureIcon"/>
+                    <Image Grid.Row="0" Grid.Column="0" HeightRequest="80" WidthRequest="80" x:Name="pictureIcon" BackgroundColor="Silver"/>
                     <Label Text="City:" Grid.Row="0" Grid.Column="1" FontSize="Medium" TextColor="White" x:Name="cityLabel" Margin="0,0,40,0"/>
                     <Label Text="Datetime:" Grid.Row="1" Grid.Column="1" Margin="0,-15,20,0" FontSize="Medium" TextColor="White" x:Name="datetimeLabel"/>
                     <Label Text="" Grid.Row="1" Grid.Column="2" FontSize="Medium" Margin="-45,-15,0,0" TextColor="White" x:Name="datetimeInfo"/>
@@ -77,7 +77,7 @@
                 </Grid>
                     
                 <Button Margin="0,35,0,0" BackgroundColor="white" Text="CHECK RECOMMENDATIONS" 
-                        TextColor="Black" FontFamily="OpenSansBold" FontSize="17" x:Name="buttonRecommendations"/>
+                        TextColor="Black" FontFamily="OpenSansBold" FontSize="17" x:Name="buttonRecommendations" Clicked="ButtonRecommendations_Click"/>
 
             </StackLayout>
                 

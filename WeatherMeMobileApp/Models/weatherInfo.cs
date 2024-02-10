@@ -20,6 +20,7 @@ namespace WeatherMeMobileApp
             public string main { get; set; }
             public string description { get; set; }
             public string icon { get; set; }
+            public string fullIconUrl => string.Format("http://openweathermap.org/img/wn/{0}@2x.png", icon);
         }
 
         public class Main
