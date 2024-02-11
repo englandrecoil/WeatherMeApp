@@ -24,14 +24,16 @@
                     <ImageButton Source="search_icon.png" Clicked="Button_Clicked" WidthRequest="50" HeightRequest="50"/>
                 </StackLayout>
 
-                <Grid RowDefinitions="50, Auto, Auto" ColumnDefinitions="50, Auto, Auto" ColumnSpacing="30" Margin="0,35,0,0">
+                <Grid RowDefinitions="50, Auto, Auto" ColumnDefinitions="50, Auto, Auto, Auto" ColumnSpacing="30" Margin="0,35,0,0">
                     <Image Grid.Row="0" Grid.Column="0" HeightRequest="80" WidthRequest="80" x:Name="pictureIcon" BackgroundColor="Silver"/>
                     <Label Text="City:" Grid.Row="0" Grid.Column="1" FontSize="Medium" TextColor="White" x:Name="cityLabel" Margin="0,0,40,0"/>
                     <Label Text="Datetime:" Grid.Row="1" Grid.Column="1" Margin="0,-15,20,0" FontSize="Medium" TextColor="White" x:Name="datetimeLabel"/>
                     <Label Text="" Grid.Row="1" Grid.Column="2" FontSize="Medium" Margin="-45,-15,0,0" TextColor="White" x:Name="datetimeInfo"/>
                     <Label Text="" Grid.Row="0" Grid.Column="2" FontSize="Medium" Margin="-90,0,0,15" TextColor="White" x:Name="cityInfo"/>
+                    <Button BackgroundColor="White" Text="ADD" TextColor="Black" 
+                            FontSize="15" Grid.Row="0" Grid.Column="3" Margin="-90,-10,40,20" HorizontalOptions="Start" Clicked="AddFavorite"></Button>
                 </Grid>
-                
+
                 <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="Auto,Auto,Auto,Auto" ColumnSpacing="10" Margin="-10,30,0,0" RowSpacing="40">
                     <Label TextColor="White" Grid.Row="0" Grid.Column="0" Text="Temperature:" 
                            VerticalTextAlignment="Center" FontSize="Medium" x:Name="temperatureLabel" />
@@ -75,14 +77,39 @@
                            VerticalTextAlignment="Center" FontSize="Medium" x:Name="visibilityInfo" Margin="-20,0,0,0"/>
 
                 </Grid>
-                    
+
                 <Button Margin="0,35,0,0" BackgroundColor="white" Text="CHECK RECOMMENDATIONS" 
                         TextColor="Black" FontFamily="OpenSansBold" FontSize="17" x:Name="buttonRecommendations" Clicked="ButtonRecommendations_Click"/>
 
+                <Label TextColor="White" FontSize="Medium" FontAttributes="Bold" Text="Your favorites here:" Margin="0,20,0,5"></Label>
+                <CollectionView ItemsSource="{Binding Favorites}" SelectionMode="Single" x:Name="favoritesListView" BackgroundColor="Transparent" HeightRequest="140" >
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="0,10,0,0" ColumnSpacing="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding City}" TextColor="White" FontSize="Medium" />
+                                <Label Text="{Binding Temperature}" Grid.Column="1" TextColor="White" FontSize="Medium" HorizontalTextAlignment="Start"/>
+                                <Label Text="°" Grid.Column="2" TextColor="White" FontSize="Medium"/>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="FavoriteItem_Tapped"/>
+                                </Grid.GestureRecognizers>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <Button Text="REFRESH" BackgroundColor="White" FontFamily="OpenSansBold" TextColor="Black" FontSize="17" Margin="0,5,0,0" Clicked="ButtonRefresh"></Button>
+
             </StackLayout>
-                
+
+
         </Grid>
-            
+        
+        
+
     </ScrollView>
 
 </ContentPage>

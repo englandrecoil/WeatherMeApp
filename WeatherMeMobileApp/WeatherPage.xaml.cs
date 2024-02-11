@@ -1,13 +1,17 @@
+using System.Collections.ObjectModel;
 using System.Text;
+using WeatherMeMobileApp.Models;
 using WeatherMeMobileApp.Services;
 
 namespace WeatherMeMobileApp;
 
 public partial class WeatherPage : ContentPage
 {
+    private ObservableCollection<FavoriteItem> favorites = new ObservableCollection<FavoriteItem>();
     public WeatherPage()
     {
         InitializeComponent();
+        favoritesListView.ItemsSource = favorites;
     }
 
     private string GetWindDirection(double degrees)
@@ -75,8 +79,8 @@ public partial class WeatherPage : ContentPage
 
     }
     private async void Button_Clicked(object sender, EventArgs e)
-    {   
-        if ( string.IsNullOrWhiteSpace(cityField.Text))
+    {
+        if (string.IsNullOrWhiteSpace(cityField.Text))
         {
             return;
         }
@@ -104,7 +108,7 @@ public partial class WeatherPage : ContentPage
 
             }
 
-            catch(HttpRequestException ex)
+            catch (HttpRequestException ex)
             {
                 Console.WriteLine($"Error getting recommendations: {ex.Message}");
             }
@@ -162,6 +166,53 @@ public partial class WeatherPage : ContentPage
             }
         }
         return recommendations.ToString();
+    }
+
+    // Favorites
+
+    private void AddFavorite(object sender, EventArgs e)
+    {
+        if (string.IsNullOrWhiteSpace(cityField.Text))
+        {
+            return;
+        }
+
+        if (favorites.Any(favorite => favorite.City == cityField.Text))
+        {
+            return;
+        }
+        var newFavorite = new FavoriteItem { City = cityField.Text, Temperature= double.NaN };
+        favorites.Add(newFavorite);
+
+    }
+
+    private async void FavoriteItem_Tapped(object sender, EventArgs e)
+    {
+        var tappedItem = (sender as Grid)?.BindingContext as FavoriteItem;
+        if (tappedItem != null)
+        {
+            bool answer = await DisplayAlert("Confirmation", $"Do you want to remove {tappedItem.City}?", "Yes", "No");
+
+            if (answer)
+            {
+                favorites.Remove(tappedItem);
+            }
+        }
+    }
+
+    private async void ButtonRefresh(object sender, EventArgs e)
+    {   
+        var apiService = new APIService();
+
+
+        foreach (var favorite in favorites)
+        {
+            var result = await apiService.GetWeatherByCity(favorite.City);
+
+            favorite.Temperature = ConvertKelvinToCelsius(result.main.temp);
+
+        }
+
     }
 
 
